@@ -1,0 +1,79 @@
+- name: add php (key)
+  apt_key:
+      url: https://packages.sury.org/php/apt.gpg
+      state: present
+
+- name: add php deb
+  apt_repository:
+      repo: deb https://packages.sury.org/php/ {{ lsb_release }} main
+      state: present
+      filename: 'php7.2'
+
+
+
+- name: install php7.2
+  apt: name=php7.2 state=present
+
+- name: install php7.2-fpm
+  apt: name=php7.2-fpm state=present
+
+- name: install php7.2-mysql
+  apt: name=php7.2-mysql state=present
+
+- name: install php7.2-curl
+  apt: name=php7.2-curl state=present
+
+- name: install php7.2-json
+  apt: name=php7.2-json state=present
+
+- name: install php7.2-gd
+  apt: name=php7.2-gd state=present
+
+- name: install php7.2-msgpack
+  apt: name=php7.2-msgpack state=present
+
+- name: install php7.2-memcached
+  apt: name=php7.2-memcached state=present
+
+- name: install php7.2-intl
+  apt: name=php7.2-intl state=present
+
+- name: install php7.2-sqlite3
+  apt: name=php7.2-sqlite3 state=present
+
+- name: install php7.2-gmp
+  apt: name=php7.2-gmp state=present
+
+- name: install php7.2-geoip
+  apt: name=php7.2-geoip state=present
+
+- name: install php7.2-mbstring
+  apt: name=php7.2-mbstring state=present
+
+- name: install php7.2-redis
+  apt: name=php7.2-redis state=present
+
+- name: install php7.2-xml
+  apt: name=php7.2-xml state=present
+
+- name: install php7.2-zip
+  apt: name=php7.2-zip state=present
+
+- name: install php7.2-xdebug
+  apt: name=php7.2-xdebug state=present
+
+
+
+- name: Copy across new configuration php fpm
+  template:
+    src: "php.fpm.ini"
+    dest: "/etc/php/7.2/fpm/php.ini"
+
+- name: Copy across new configuration php cli
+  template:
+    src: "php.cli.ini"
+    dest: "/etc/php/7.2/cli/php.ini"
+
+- name: php restart
+  shell: >
+    sudo /etc/init.d/php7.2-fpm restart

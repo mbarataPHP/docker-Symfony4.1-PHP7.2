@@ -1,0 +1,10 @@
+- name: Download phpunit-7.phar
+  get_url:
+    url: https://phar.phpunit.de/phpunit-7.phar
+    dest: /usr/local/bin/phpunit.phar
+    mode: 0777
+
+
+- name: create alias phpunit
+  shell: >
+    echo "alias phpunit='php /usr/local/bin/phpunit.phar'" >> ~/.bashrc

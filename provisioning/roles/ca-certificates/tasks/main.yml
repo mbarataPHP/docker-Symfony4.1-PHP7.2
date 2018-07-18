@@ -1,0 +1,2 @@
+- name: install ca-certificates
+  apt: name=ca-certificates state=present

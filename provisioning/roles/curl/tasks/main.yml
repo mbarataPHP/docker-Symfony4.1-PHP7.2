@@ -1,0 +1,2 @@
+- name: install curl
+  apt: name=curl state=present

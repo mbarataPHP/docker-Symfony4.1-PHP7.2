@@ -1,0 +1,2 @@
+- name: install sudo
+  apt: name=sudo state=present

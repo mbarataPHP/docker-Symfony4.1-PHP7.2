@@ -1,0 +1,7 @@
+
+
+- name: MySQL | install mysql packages
+  apt: pkg={{ item }} state=installed
+  become: true
+  with_items:
+   - mysql-server

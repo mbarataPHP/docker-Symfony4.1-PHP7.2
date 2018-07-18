@@ -1,0 +1,15 @@
+- name: Copy across service
+  template:
+    src: "service.sh"
+    dest: "/usr/local/bin/service.sh"
+
+
+- name: active service
+  shell: >
+    chmod 777 /usr/local/bin/service.sh &&
+    echo "alias start-service='/usr/local/bin/service.sh'" >> ~/.bashrc
+
+- name: Copy across service alias
+  template:
+    src: "alias.sh"
+    dest: "/alias.sh"

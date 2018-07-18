@@ -1,0 +1,6 @@
+- name: add apt nodejs
+  shell: >
+    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+
+- name: install nodejs
+  apt: name=nodejs state=present

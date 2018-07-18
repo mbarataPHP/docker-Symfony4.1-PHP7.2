@@ -1,0 +1,5 @@
+- name: preparation mise en prod
+  template:
+    src: "prod.sh"
+    dest: "/prod.sh"
+    mode: 0777

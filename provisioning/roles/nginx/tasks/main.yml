@@ -1,0 +1,29 @@
+- name: main | uninstall apache packages
+  apt: >
+    pkg={{ item }}
+    state=absent
+    purge=yes
+    force=yes
+  with_items:
+    - apache2*
+
+- name: install nginx
+  apt: name=nginx-extras state=present
+
+- name: Copy across new configuration
+  template:
+    src: "nginx_config.conf"
+    dest: "/etc/nginx/sites-available/default"
+
+- name: mkdir /docker/web
+  file:
+    path: /docker/web
+    state: directory
+    mode: 0777
+
+- name: Move Composer into globally-accessible location.
+  shell: >
+    ln -s /etc/nginx/sites-available/nginx_config.conf /etc/nginx/sites-enabled/ &&
+    nginx -t &&
+    /etc/init.d/nginx restart
+
