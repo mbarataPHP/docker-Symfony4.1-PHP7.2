@@ -3,7 +3,7 @@
 
 ## Installation
 
-ouvrir le **shell** 
+ouvrir le **shell** et taper les commandes suivantes.
 
 
 
@@ -24,6 +24,14 @@ docker run -p 80:80 -v $(pwd)/web:/docker/web -ti php72:symfony4 bin/bash
 
 ## environnement
 
+### initialiser le projet
+
+```
+cd /docker/web/
+make
+```
+
+
 ### commandes
 
 | alias | Description |
@@ -33,15 +41,9 @@ docker run -p 80:80 -v $(pwd)/web:/docker/web -ti php72:symfony4 bin/bash
 | phpunit | Exécute les tests de PHP |
 
 
-### initialiser le projet
-
-```
-cd /docker/web/
-make
-```
 
 ### mysql
 
 | login | mot de passe |
 | :---: | :---: |
-| root |   |
+| docker | docker  |

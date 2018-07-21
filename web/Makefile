@@ -14,6 +14,7 @@ cache-clear: vendor
 	rm -rf var/
 
 bdd: cache-clear
+	bash /usr/local/bin/service.sh
 	php bin/console doctrine:database:create --if-not-exists
 	php bin/console doctrine:schema:update --force
 

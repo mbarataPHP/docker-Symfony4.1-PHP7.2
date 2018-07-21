@@ -5,3 +5,7 @@
   become: true
   with_items:
    - mysql-server
+
+- name: config
+  shell: >
+    bash /docker/provisioning/roles/mysql/templates/config.sh
